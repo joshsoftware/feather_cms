@@ -34,12 +34,14 @@ class FeatherCmsGenerator < Rails::Generators::NamedBase
     end
     route_str << "  end"
     route route_str
+
   end
 
   def copy_view_files
     @pages = attributes.collect(&:name)
     base_path = File.join("app/views/feathers")
-    empty_directory base_path
+    #empty_directory base_path
+    template 'layout.html.erb', 'app/views/layouts/feather_layout.html.erb'
 
     @pages.each do |action|
       @action = action
@@ -51,8 +53,10 @@ class FeatherCmsGenerator < Rails::Generators::NamedBase
   def add_static_files
     if Rails.version > '3.0.9'
       directory 'codemirror', 'app/assets/codemirror'
+      copy_file "bootstrap.css", 'app/assets/stylesheets/bootstrap.css' 
     else
       directory 'codemirror', 'public/codemirror'
+      copy_file "bootstrap.css", 'public/stylesheets/bootstrap.css' 
     end
   end
 

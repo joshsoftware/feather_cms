@@ -1,33 +1,33 @@
-<%%= feather_cms_include_tag %>
-<div class="container">
-  <h1> <%= @action.humanize %> </h1>
-  <div class="top-links">
-    <%%= link_to "Published Page", feather_<%=@action%>_path(:published) %> |
-    <%%= link_to "Draft Page", feather_<%=@action%>_path(:draft) %>
-  </div>
-
-  <%%= form_for(@feather_page, :url => feather_<%= @action %>_path) do |f| %>
-    <%% if @feather_page.errors.any? %>
-      <div id="error_explanation">
-        <h2><%%= pluralize(@feather_page.errors.count, "error") %> prohibited this feather page from being saved:</h2>
-
-        <ul>
-        <%% @feather_page.errors.full_messages.each do |msg| %>
-          <li><%%= msg %></li>
-        <%% end %>
-        </ul>
+<header>
+<%% status = params[:status] || @feather_page.status %> 
+<div class="subnav">
+  <ul class="nav nav-pills">
+    <li class='<%%= status == 'published' ? 'active ' : ''  %>'>
+      <%%= link_to "Published Page", feather_<%=@action%>_path(:published) %> 
+    </li>
+    <li class='<%%= status == 'draft' ? 'active ' : ''  %>'>
+      <%%= link_to "Draft Page", feather_<%=@action%>_path(:draft) %>
+    </li>
+  </ul>
+</div>
+<hr>
+</header>
+<div class="row">
+  <div class="span12">
+    <%%= form_for(@feather_page, :url => feather_<%= @action %>_path) do |f| %>
+      <div class="control-group">
+        <label class="control-label" for="select01">Status</label>
+        <div class="controls">
+          <%%= f.select :status, [:draft, :published]  %> 
+        </div>
       </div>
+      <div class="control-group">
+        <label class="control-label" for="textarea">Content</label>
+        <div class="controls">
+          <%%= f.text_area :content, :class => 'codemirror_feather_cms input-xlarge span12', :row => "20" %>
+        </div>
+      </div>
+      <%%= f.submit "Save", :class => 'btn btn-primary btn-large' %>
     <%% end %>
-
-    <div class="field">
-      <%%= f.label :status %>:
-      <%%= f.select :status, [:draft, :published]  %> 
-    </div>
-    <div class="field">
-      <%%= f.text_area :content, :class => 'codemirror_feather_cms' %>
-    </div>
-    <div class="field">
-      <%%= f.submit "Save" %>
-    </div>
-  <%% end %>
+  </div>
 </div>

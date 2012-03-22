@@ -1,5 +1,6 @@
 class FeathersController < ApplicationController
   http_basic_authenticate_with :name => "feather", :password => "password"
+  layout 'feather_layout'
   before_filter :find_page
 
   <% @pages.each do |page| %>
