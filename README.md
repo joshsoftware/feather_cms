@@ -10,13 +10,13 @@ Add the gem to your Gemfile
 
 Now, generate the pages 
 
-    $ rake db:migrate
-
     # Use file system to store pages( default: public/system/templates)
     $ rails g feather_cms about_us jobs team
     
     #Use db to store pages
     $ rails g feather_cms about_us jobs team --storage=db
+
+    $ rake db:migrate
 
 This generates a route, the controller action and the view for each page. Start the server and use the URL http://localhost:3000/feathers/pages to go to the admin panel. 
 
