@@ -51,7 +51,7 @@ module FeatherCms
 
       def _cms_content(field)
         return nil if self.id.nil?
-        TemplateCache.get_or_cache_file(template_name(field))
+        TemplateCache.cache_file(template_name(field))
       end
 
     end

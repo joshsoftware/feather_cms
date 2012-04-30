@@ -4,8 +4,6 @@ class FeatherCmsGenerator < Rails::Generators::NamedBase
   argument :name, :type => :string, :default => "feather_cms", :required => false 
   argument :storage, :type => :string , :default => 'file'
 
-  #PAGES = ['about_us']
-
   def create_cms_files
     @pages = attributes.collect(&:name)
 
@@ -28,13 +26,12 @@ class FeatherCmsGenerator < Rails::Generators::NamedBase
 
     template 'migration.rb', "db/migrate/#{migration_number}_create_feather_pages.rb"
 
-    route_str =  "scope '/feathers' do \n"
-    @pages.each do |action|
-      route_str << %{    match '#{action}_page/(:status)' => 'feathers##{action}', :as => :feather_#{action} \n}
-    end
-    route_str << "  end"
-    route route_str
-
+    route %{scope '/feathers' do
+    match 'page/:type/(:status)' => 'feathers#page', :as => :feather_page
+    get 'pages' => 'feathers#index', :as => :feather_pages
+    get 'preivew/:type/(:status)' => 'feathers#preivew', :as => 'feather_page_preview'
+  end
+  get 'page/:type' => 'feathers#published', :as => 'feather_published_page'}
   end
 
   def copy_view_files
@@ -42,10 +39,11 @@ class FeatherCmsGenerator < Rails::Generators::NamedBase
     base_path = File.join("app/views/feathers")
     #empty_directory base_path
     template 'layout.html.erb', 'app/views/layouts/feather_layout.html.erb'
+    template 'index.html.erb', File.join(base_path, 'index.html.erb')
 
-    @pages.each do |action|
-      @action = action
-      @path = File.join(base_path, "#{action}.html.erb")
+    @pages.each do |type|
+      @type = type
+      @path = File.join(base_path, "#{type}.html.erb")
       template 'form.html.erb', @path
     end
   end

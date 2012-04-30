@@ -14,12 +14,17 @@ module FeatherCms
         yield self if block_given? 
 
         template_store_type = (template_store_type || :file).to_sym
-        FeatherCms::TemplateCache.init({:max_limit => cache_max_limit,
-                                      :permanent_keys => cache_permanent_keys})
+        FeatherCms::TemplateCache.init
         Dir.mkdir(template_store_path) unless Dir.exists?(template_store_path)
 
         if defined?(ActionView::Helpers)
           ActionView::Helpers.send(:include, FeatherCms::ViewHelper)
+        end
+
+        if defined?(Rails)
+          @@config[:layouts] = Dir.entries(Rails.root.to_s + '/app/views/layouts').reject do |i|
+            i.start_with?('.', '_', 'feather_layout')
+          end.collect{|l| l.split('.').first}
         end
       end
 
@@ -31,21 +36,18 @@ module FeatherCms
         @@config[:template_store_path]
       end
 
-      def use_version=(value)
-        @@config[:use_version] = value
-      end
-
-      def use_version
-        @@config[:use_version]
-      end
-
       def template_extenstion=(value)
         @@config[:template_extenstion] = value
       end
 
       def template_extenstion
-        @@config[:template_extenstion]
+        @@config[:template_extenstion] 
       end
+
+      def layouts
+        @@config[:layouts]
+      end
+
     end
 
   end

@@ -3,10 +3,13 @@
 <div class="subnav">
   <ul class="nav nav-pills">
     <li class='<%%= status == 'published' ? 'active ' : ''  %>'>
-      <%%= link_to "Published Page", feather_<%=@action%>_path(:published) %> 
+      <%%= link_to 'Published Page', feather_page_path('<%= @type %>',:published) %> 
     </li>
     <li class='<%%= status == 'draft' ? 'active ' : ''  %>'>
-      <%%= link_to "Draft Page", feather_<%=@action%>_path(:draft) %>
+      <%%= link_to 'Draft Page', feather_page_path('<%= @type %>', :draft) %>
+    </li>
+    <li>
+    <%%= link_to 'Preview', feather_page_preview_path('<%= @type %>', status), target: '_blank' %>
     </li>
   </ul>
 </div>
@@ -14,11 +17,15 @@
 </header>
 <div class="row">
   <div class="span12">
-    <%%= form_for(@feather_page, :url => feather_<%= @action %>_path) do |f| %>
+    <%%= form_for(@feather_page, :url => feather_page_path('<%= @type %>')) do |f| %>
       <div class="control-group">
-        <label class="control-label" for="select01">Status</label>
+        <label class="control-label" for="status">Status</label>
         <div class="controls">
           <%%= f.select :status, [:draft, :published]  %> 
+        </div>
+        <label class="control-label" for="layout">Layout</label>
+        <div class="controls">
+          <%%= f.select :layout, FeatherCms::Config.layouts  %>
         </div>
       </div>
       <div class="control-group">

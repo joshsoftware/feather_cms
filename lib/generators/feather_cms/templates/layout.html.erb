@@ -30,14 +30,14 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">Feather CMS</a>
+          <%%= link_to 'Feather CMS', feather_pages_path, :class => 'brand' %>
           <div class="nav-collapse">
             <ul class="nav">
-              <%- @pages.each do |page| %>
-                <li class="<%%= params[:action] == '<%=page%>' ? 'active' : '' %>">
-                  <%%= link_to '<%= page.humanize %>' , feather_<%=page%>_path %> 
-                </li>
-              <% end -%>  
+            <%- @pages.each do |page| -%>
+              <li class="<%%= params[:type] == '<%=page%>' ? 'active' : '' %>">
+                <%%= link_to '<%= page.humanize %>' , feather_page_path('<%= page %>') %> 
+              </li>
+            <%- end -%>  
             </ul>
           </div><!--/.nav-collapse -->
         </div>
