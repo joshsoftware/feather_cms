@@ -3,7 +3,7 @@ Description:
 
 
 Example:
-    rails generate feather_cms about_us jobs [storage=file or db]
+    rails generate feather_cms about_us jobs [--storage=file or db]
 
     This will create:
       - Add config file 'feather_cms.eb'
