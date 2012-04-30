@@ -9,7 +9,7 @@
       <%%= link_to 'Draft Page', feather_page_path('<%= @type %>', :draft) %>
     </li>
     <li>
-    <%%= link_to 'Preview', feather_page_preview_path('<%= @type %>', status), target: '_blank' %>
+    <%%= link_to 'Preview', feather_page_preview_path('<%= @type %>', status), target: '_blank' unless @feather_page.new_record? %>
     </li>
   </ul>
 </div>

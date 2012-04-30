@@ -7,12 +7,11 @@ class FeatherCmsGenerator < Rails::Generators::NamedBase
   def create_cms_files
     @pages = attributes.collect(&:name)
 
-    unless ['file', 'db'].include?(options['storage'])
-      puts "Valid storage type are db,file"
-      storage = 'file'
-      options['storage'] = 'file'
-    end
-    @storage = options['storage']
+    @storage = if ['file', 'db'].include?(options['storage'])
+                 options['storage']
+               else
+                 'file'
+               end
 
     template 'initializer.rb', 'config/initializers/feather_cms.rb'
     template 'controller.rb', 'app/controllers/feathers_controller.rb'
