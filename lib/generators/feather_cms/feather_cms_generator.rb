@@ -7,8 +7,9 @@ class FeatherCmsGenerator < Rails::Generators::Base
     @storage = ['file', 'db'].include?(options['storage']) ? options['storage'] : 'file'
 
     template 'initializer.rb', 'config/initializers/feather_cms.rb'
-    template 'controller.rb', 'app/controllers/feathers_controller.rb'
-    template 'model.rb', 'app/models/feather_page.rb'
+    template 'controller.rb',  'app/controllers/feathers_controller.rb'
+    template 'model.rb',       'app/models/feather_page.rb'
+    template 'helper.rb',      'app/helpers/feathers_helper.rb'
 
     migration_file = Dir.glob("db/migrate/[0-9]*_*.rb").grep(/\d+_create_feather_pages.rb$/).first
     migration_number = if migration_file 

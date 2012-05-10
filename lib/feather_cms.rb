@@ -2,7 +2,6 @@ require "feather_cms/version"
 require "feather_cms/template_cache"
 require "feather_cms/config"
 require "feather_cms/model"
-require "feather_cms/view_helper"
 require "feather_cms/railtie" if defined?(Rails)
 
 module FeatherCms

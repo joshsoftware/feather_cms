@@ -17,10 +17,6 @@ module FeatherCms
         FeatherCms::TemplateCache.init
         Dir.mkdir(template_store_path) unless Dir.exists?(template_store_path)
 
-        if defined?(ActionView::Helpers)
-          ActionView::Helpers.send(:include, FeatherCms::ViewHelper)
-        end
-
         if defined?(Rails)
           @@config[:layouts] = Dir.entries(Rails.root.to_s + '/app/views/layouts').reject do |i|
             i.start_with?('.', '_', 'feather_layout')
