@@ -15,6 +15,8 @@ Now, generate the pages
     
     #Use db to store pages
     $ rails g feather_cms about_us jobs team --storage=db
+    or
+    $ rails g feather_cms about_us jobs team -t=db
 
     $ rake db:migrate
 
