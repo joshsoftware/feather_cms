@@ -5,6 +5,9 @@ Description:
 Example:
     rails generate feather_cms about_us jobs [--storage=file or db]
 
+    Options
+    --storage= file or db / -t= file or db
+
     This will create:
-      - Add config file 'feather_cms.eb'
+      - Add config file 'feather_cms.rb'
       - Add Codemirror javascript and css

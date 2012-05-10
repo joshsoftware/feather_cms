@@ -1,17 +1,10 @@
-class FeatherCmsGenerator < Rails::Generators::NamedBase
+class FeatherCmsGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   argument :attributes, :type => :array, :banner => "about_us jobs"
-  argument :name, :type => :string, :default => "feather_cms", :required => false 
-  class_option :storage, :aliases => '-s', :type => :string, :desc => 'db or file storage.'
+  class_option :storage, :aliases => '-t', :type => :string, :desc => 'db or file storage.'
 
   def create_cms_files
-    @pages = attributes.collect(&:name)
-
-    @storage = if ['file', 'db'].include?(options['storage'])
-                 options['storage']
-               else
-                 'file'
-               end
+    @storage = ['file', 'db'].include?(options['storage']) ? options['storage'] : 'file'
 
     template 'initializer.rb', 'config/initializers/feather_cms.rb'
     template 'controller.rb', 'app/controllers/feathers_controller.rb'
@@ -25,17 +18,25 @@ class FeatherCmsGenerator < Rails::Generators::NamedBase
                        end
 
     template 'migration.rb', "db/migrate/#{migration_number}_create_feather_pages.rb"
+  end
 
-    route %{scope '/feathers' do
+  def add_routes
+    feather_route =  
+<<-ROUTES
+
+  scope '/feathers' do
     match 'page/:type/(:status)' => 'feathers#page', :as => :feather_page
     get 'pages' => 'feathers#index', :as => :feather_pages
     get 'preivew/:type/(:status)' => 'feathers#preivew', :as => 'feather_page_preview'
   end
-  get 'page/:type' => 'feathers#published', :as => 'feather_published_page'}
+  get 'page/:type' => 'feathers#published', :as => 'feather_published_page'
+ROUTES
+
+    route feather_route
   end
 
   def copy_view_files
-    @pages = attributes.collect(&:name)
+    @pages = attributes
     base_path = File.join("app/views/feathers")
     #empty_directory base_path
     template 'layout.html.erb', 'app/views/layouts/feather_layout.html.erb'
@@ -57,7 +58,5 @@ class FeatherCmsGenerator < Rails::Generators::NamedBase
       copy_file "bootstrap.css", 'public/stylesheets/bootstrap.css' 
     end
   end
-
-
 
 end

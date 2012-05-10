@@ -1,5 +1,11 @@
 class FeathersController < ApplicationController
-  http_basic_authenticate_with name: 'feather', password: 'password', except: :published
+
+  if FeatherCms::Config.authentication.kind_of?(Hash)
+    http_basic_authenticate_with FeatherCms::Config.authentication.merge(except: :published)
+  else
+    before_filter FeatherCms::Config.authentication.to_sym, except: :published
+  end
+
   before_filter :find_page, only: [:page, :preivew]
 
   layout 'feather_layout', except: [:preivew, :published]

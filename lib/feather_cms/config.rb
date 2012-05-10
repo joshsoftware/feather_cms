@@ -28,24 +28,20 @@ module FeatherCms
         end
       end
 
-      def template_store_path=(value)
-        @@config[:template_store_path] = value
-      end
-
-      def template_store_path
-        @@config[:template_store_path]
-      end
-
-      def template_extenstion=(value)
-        @@config[:template_extenstion] = value
-      end
-
-      def template_extenstion
-        @@config[:template_extenstion] 
-      end
-
       def layouts
         @@config[:layouts]
+      end
+
+      [:template_store_path, :template_extenstion, :authentication].each do |attr|
+        class_eval <<-METHOD, __FILE__, __LINE__ + 1
+          def #{attr}=(value)
+            @@config[:#{attr}] = value
+          end
+
+          def #{attr}
+            @@config[:#{attr}]
+          end
+        METHOD
       end
 
     end
