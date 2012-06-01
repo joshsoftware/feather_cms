@@ -33,11 +33,12 @@
           <%%= link_to 'Feather CMS', feather_pages_path, :class => 'brand' %>
           <div class="nav-collapse">
             <ul class="nav">
-            <%- @pages.each do |page| -%>
-              <li class="<%%= params[:type] == '<%=page%>' ? 'active' : '' %>">
-                <%%= link_to '<%= page.humanize %>' , feather_page_path('<%= page %>') %> 
-              </li>
-            <%- end -%>  
+              <li><%%= link_to "Add page", new_feather_page_path %></li>
+              <%- @pages.each do |page| -%>
+                <li class="<%%= params[:type] == '<%=page%>' ? 'active' : '' %>">
+                  <%%= link_to '<%= page.humanize %>' , feather_page_path('<%= page %>') %> 
+                </li>
+              <%- end -%>  
             </ul>
           </div><!--/.nav-collapse -->
         </div>

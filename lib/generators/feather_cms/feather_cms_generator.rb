@@ -29,6 +29,8 @@ class FeatherCmsGenerator < Rails::Generators::Base
     match 'page/:type/(:status)' => 'feathers#page', :as => :feather_page
     get 'pages' => 'feathers#index', :as => :feather_pages
     get 'preivew/:type/(:status)' => 'feathers#preivew', :as => 'feather_page_preview'
+    get 'new' => 'feathers#new', :as => :new_feather_page
+    post 'create' => 'feathers#create', :as => :create_feather_page
   end
   get 'page/:type' => 'feathers#published', :as => 'feather_published_page'
 ROUTES
@@ -42,6 +44,7 @@ ROUTES
     #empty_directory base_path
     template 'layout.html.erb', 'app/views/layouts/feather_layout.html.erb'
     template 'index.html.erb', File.join(base_path, 'index.html.erb')
+    template 'new.html.erb', File.join(base_path, 'new.html.erb')
 
     @pages.each do |type|
       @type = type
