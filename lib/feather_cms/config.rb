@@ -28,7 +28,7 @@ module FeatherCms
         @@config[:layouts]
       end
 
-      [:template_store_path, :template_extenstion, :authentication].each do |attr|
+      [:template_store_path, :template_extenstion, :authentication, :template_types].each do |attr|
         class_eval <<-METHOD, __FILE__, __LINE__ + 1
           def #{attr}=(value)
             @@config[:#{attr}] = value
