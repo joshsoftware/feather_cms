@@ -23,6 +23,19 @@ class FeathersController < ApplicationController
     render action:  @feather_page.name
   end
 
+  def new
+    @feather_page = FeatherPage.new
+  end
+
+  def create
+    @feather_page = FeatherPage.new(params[:feather_page])
+    if @feather_page.save
+      redirect_to feather_pages_path
+    else
+      render action: "new"
+    end
+  end
+
   def preivew
     render inline: @feather_page.content, type: 'html',  layout: @feather_page.layout
   end

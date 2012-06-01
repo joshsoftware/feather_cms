@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="span12">
+    <%%= form_for(@feather_page, :url => create_feather_page_path) do |f| %>
+      <%% if @feather_page.errors.any? %>
+        <div id="error_explanation">
+          <h2><%%= pluralize(@feather_page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+          <ul>
+          <%% @feather_page.errors.full_messages.each do |msg| %>
+            <li><%%= msg %></li>
+          <%% end %>
+          </ul>
+        </div>
+      <%% end %>
+    
+    
+      <div class="control-group">
+        <label class="control-label" for="name">Name</label>
+        <div class="controls">
+          <%%= f.text_field :name %> 
+        </div>
+      </div>
+      <%%= f.submit "Save", :class => 'btn btn-primary btn-large' %>
+    <%% end %>
+  </div>
+</div>
