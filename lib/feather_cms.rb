@@ -9,9 +9,6 @@ module FeatherCms
 
   def self.included(base)
     base.extend FeatherCms::Model::ClassMethods
-    if Config.template_store_type == :file 
-      base.define_feather_cms_callbacks
-    end
     base.template_content_field :content
     base.send(:include, FeatherCms::Model::InstanceMethods)
   end
