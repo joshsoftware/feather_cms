@@ -13,6 +13,8 @@ Now, generate the pages
     # Use file system to store pages( default: public/system/templates)
     $ rails g feather_cms about_us jobs team
     
+    OR
+    
     #Use db to store pages
     $ rails g feather_cms about_us jobs team --storage=db
     or
@@ -25,6 +27,10 @@ This generates a route, the controller action and the view for each page. Start 
 This has basic HTTP authentication setup.The default username and password are feather/password and you can change this in feathers_controller.rb
 
       http_basic_authenticate_with name: 'feather', password: 'password', except: :published
+
+Template types can be added in the feather_cms initializer 
+
+    eg. c.template_types = ["html", "haml"]
 
 # Features
 
