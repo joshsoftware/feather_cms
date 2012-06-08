@@ -5,6 +5,7 @@ class CreateFeatherPages < ActiveRecord::Migration
       t.string :status, :default => 'draft'
       t.text   :content
       t.string :layout, :default => 'application'
+      t.string :template_type, :default => 'html'
       t.timestamps
     end
   end

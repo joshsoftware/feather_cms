@@ -24,12 +24,12 @@ class FeathersController < ApplicationController
   end
 
   def preivew
-    render inline: @feather_page.content, type: 'html',  layout: @feather_page.layout
+    render inline: @feather_page.content, type: @feather_page.template_type,  layout: @feather_page.layout
   end
 
   def published
     @feather_page = FeatherPage.where(name: params[:type], status: 'published').first 
-    render inline: @feather_page.content, type: 'html',  layout: @feather_page.layout
+    render inline: @feather_page.content, type: @feather_page.template_type,  layout: @feather_page.layout
   end
 
   def find_page

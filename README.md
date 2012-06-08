@@ -24,6 +24,10 @@ This has basic HTTP authentication setup.The default username and password are f
 
       http_basic_authenticate_with name: 'feather', password: 'password', except: :published
 
+Template types can be added in the feather_cms initializer 
+
+   eg. c.template_types = ["html", "haml"]
+
 # Features
 
 * Creates a route for each static page.
