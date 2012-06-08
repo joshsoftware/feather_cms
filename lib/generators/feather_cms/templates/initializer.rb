@@ -5,4 +5,5 @@ FeatherCms::Config.init do |c|
   #c.authentication = :authenticate_user!
   
   #c.template_extenstion = 'html'   #default : html
+  c.template_types = ["html", "haml"]
 end
