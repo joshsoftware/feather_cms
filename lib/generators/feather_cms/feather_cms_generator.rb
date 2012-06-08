@@ -1,11 +1,8 @@
 class FeatherCmsGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   argument :attributes, :type => :array, :banner => "about_us jobs"
-  class_option :storage, :aliases => '-t', :type => :string, :desc => 'db or file storage.'
 
   def create_cms_files
-    @storage = ['file', 'db'].include?(options['storage']) ? options['storage'] : 'file'
-
     template 'initializer.rb', 'config/initializers/feather_cms.rb'
     template 'controller.rb',  'app/controllers/feathers_controller.rb'
     template 'model.rb',       'app/models/feather_page.rb'

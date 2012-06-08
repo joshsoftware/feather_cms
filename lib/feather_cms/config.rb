@@ -13,7 +13,7 @@ module FeatherCms
       def init(&block)
         yield self if block_given? 
 
-        template_store_type = (template_store_type || :file).to_sym
+        template_store_type = :db
         FeatherCms::TemplateCache.init
         Dir.mkdir(template_store_path) unless Dir.exists?(template_store_path)
 
