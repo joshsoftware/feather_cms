@@ -28,6 +28,10 @@
           <%%= f.select :layout, FeatherCms::Config.layouts  %>
         </div>
       </div>
+      <label class="control-label" for="layout">Template Type</label>
+      <div class="controls">
+        <%%= f.select :template_type, FeatherCms::Config.template_types  %>
+      </div>
       <div class="control-group">
         <label class="control-label" for="textarea">Content</label>
         <div class="controls">
