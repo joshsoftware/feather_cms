@@ -12,12 +12,7 @@ Add the gem to your Gemfile
 
 Now, generate the pages 
 
-    # Use file system to store pages( default: public/system/templates)
-    $ rails g feather_cms about_us jobs team
-    
-    #Use db to store pages
-    $ rails g feather_cms about_us jobs team 
-    
+    $ rails g feather_cms 
     $ rake db:migrate
 
 This generates a route, the controller action and the view for each page. Start the server and use the URL http://localhost:3000/feathers/pages to go to the admin panel. 
@@ -34,8 +29,6 @@ Template types can be added in the feather_cms initializer
 
 * Creates a route for each static page.
 * Caching the static pages.
-* Creates the view in app/views/feathers folder
-* Easily customization FeathersController
 * CodeMirror Editor for syntax highlighting. (Default: HTML)
 * Storage is file (default) or database.
 
