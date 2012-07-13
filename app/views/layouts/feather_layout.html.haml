@@ -1,0 +1,25 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    %meta{:charset => 'utf-8'}/
+    %title Feather CMS
+    %meta{:content => 'width=device-width, initial-scale=1.0', :name => 'viewport'}/
+    %meta{:content => '', :name => 'description'}/
+    %meta{:content => '', :name => 'author'}/
+    / Le styles
+    = stylesheet_link_tag 'feather_cms/application', :media => 'all'
+    = javascript_include_tag 'feather_cms/application'
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to 'Feather CMS', pages_path, :class => 'brand'
+          .nav-collapse
+            %ul.nav
+              %li 
+                = link_to 'Add Page' , new_page_path
+    .container
+      = yield

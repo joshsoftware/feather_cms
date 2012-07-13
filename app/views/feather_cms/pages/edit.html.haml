@@ -1,0 +1,17 @@
+.row
+  %header.page-header
+    %h3 Edit Page
+.row
+  %header
+    .subnav
+      %ul.nav.nav-pills
+        - if @draft_page
+          %li{:class => (@draft_page.status == 'draft' ? 'active ' : '')}
+            = link_to 'Draft Page', edit_page_path(@draft_page) 
+        - if @published_page
+          %li{:class => (@published_page.status == 'published' ? 'active ' : '')}
+            = link_to 'Publishedi Page', edit_page_path(@published_page) 
+        %li
+          = link_to 'Preview', page_preview_path(@page), target: '_blank'
+    %hr/
+= render 'form'

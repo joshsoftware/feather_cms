@@ -1,13 +1,8 @@
 Description:
-  - Feather cms 
-
+  - Feather cms : lightweight do it your self cms 
 
 Example:
-    rails generate feather_cms about_us jobs [--storage=file or db]
-
-    Options
-    --storage= file or db / -t= file or db
+    rails generate feather_cms 
 
     This will create:
-      - Add config file 'feather_cms.rb'
-      - Add Codemirror javascript and css
+      - Add config file 'feather_cms.rb' to config/initializers

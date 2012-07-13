@@ -1,24 +1,23 @@
-# -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
+
+# Maintain your gem's version:
 require "feather_cms/version"
 
+# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "feather_cms"
   s.version     = FeatherCms::VERSION
-  s.authors     = ["Jiren Patel"]
-  s.email       = ["jiren@joshsoftware.com"]
+  s.authors     = ["Jiren Patel, Prasad Surase, Pratik Shah"]
+  s.email       = ["jiren@joshsoftware.com, prasad@joshsoftware.com, pratik@joshsoftware.com"]
   s.homepage    = ""
   s.summary     = %q{Lightweight do it youself cms}
   s.description = %q{Lightweight do it youself cms}
 
-  s.rubyforge_project = "feather_cms"
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files = Dir["test/**/*"]
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  s.add_dependency "rails", "~> 3.2.5"
+  # s.add_dependency "jquery-rails"
 
-  # specify any dependencies here; for example:
-  s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency "sqlite3"
 end

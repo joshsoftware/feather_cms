@@ -1,0 +1,23 @@
+.well.row
+  .span12
+    = form_for(@page) do |f|
+      .control-group
+        %label.control-label{:for => "status"} Name*
+        .controls
+          = f.text_field :name
+      .control-group
+        - unless @page.new_record?
+          %label.control-label{:for => "status"} Status
+          .controls
+            = f.select :status, FeatherCms::Page::STATUS 
+        %label.control-label{:for => "layout"} Layout
+        .controls
+          = f.select :layout, FeatherCms::Config.layouts 
+      %label.control-label{:for => "layout"} Template Type
+      .controls
+        = f.select :template_type, FeatherCms::Config.template_types
+      .control-group
+        %label.control-label{:for => "textarea"} Content*
+        .controls
+          = f.text_area :content, :class => 'codemirror_feather_cms input-xlarge span11', :row => "20"
+        = f.submit "Save", :class => 'btn btn-primary btn-large'
