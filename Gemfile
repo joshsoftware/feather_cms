@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source 'http://rubygems.org'
 
 # Declare your gem's dependencies in feather_cms.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -6,11 +6,12 @@ source "http://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
-gem "jquery-rails"
+gem 'jquery-rails'
 gem 'haml', '>= 3.0.0'
+gem 'bootstrap-sass'
 
 group :development do
-  gem "haml-rails", ">= 0.3.4"
+  gem 'haml-rails', '>= 0.3.4'
 end
 
 # Declare any dependencies that are still in development here instead of in

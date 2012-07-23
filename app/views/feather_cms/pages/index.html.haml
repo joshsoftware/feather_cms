@@ -7,13 +7,16 @@
         %th #
         %th Name
         %th Status
-        %th Preview
-        %th Destroy
+        %th Actions
     %tbody
       - @pages.each_with_index do |page,i| 
         %tr
           %td= (i + 1)
           %td= link_to page.name.humanize, edit_page_path(page)
           %td= page.status.humanize
-          %td= link_to 'Preview', page_preview_path(page), :target => '_blank'
-          %td= link_to 'Destroy', page_path(page), :method => :delete
+          %td
+            = link_to 'Preview', page_preview_path(page), :target => '_blank'
+            |
+            = link_to 'Edit', edit_page_path(page)
+            |
+            = link_to 'Destroy', page_path(page), :method => :delete, :confirm => true

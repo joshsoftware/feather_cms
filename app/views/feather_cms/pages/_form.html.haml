@@ -1,23 +1,28 @@
+- content_for :head do
+  = javascript_include_tag 'feather_cms/epiceditor.min'
+  = javascript_include_tag 'feather_cms/editor'
 .well.row
   .span12
-    = form_for(@page) do |f|
+    = form_for(@page, :html => {:id => 'page_form'}) do |f|
       .control-group
-        %label.control-label{:for => "status"} Name*
+        %label.control-label{:for => 'status'} Name*
         .controls
           = f.text_field :name
       .control-group
         - unless @page.new_record?
-          %label.control-label{:for => "status"} Status
+          %label.control-label{:for => 'status'} Status
           .controls
             = f.select :status, FeatherCms::Page::STATUS 
-        %label.control-label{:for => "layout"} Layout
+        %label.control-label{:for => 'layout'} Layout
         .controls
           = f.select :layout, FeatherCms::Config.layouts 
-      %label.control-label{:for => "layout"} Template Type
+      %label.control-label{:for => 'layout'} Template Type
       .controls
         = f.select :template_type, FeatherCms::Config.template_types
       .control-group
-        %label.control-label{:for => "textarea"} Content*
+        %label.control-label{:for => 'textarea'} Content*
         .controls
-          = f.text_area :content, :class => 'codemirror_feather_cms input-xlarge span11', :row => "20"
-        = f.submit "Save", :class => 'btn btn-primary btn-large'
+          = f.hidden_field :content, :id => 'page_content'
+          =# f.text_area :content, :class => 'feather_editor input-xlarge span11', :row => '20'
+          #epiceditor
+        = f.submit 'Save', :class => 'btn btn-primary btn-large'

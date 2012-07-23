@@ -50,7 +50,6 @@ module FeatherCms
       else
         render :new
       end
-      
     end
 
     def destroy
@@ -59,7 +58,7 @@ module FeatherCms
     end
 
     def preview
-      render :inline => @page.content, :type => @page.template_type, :layout => @page.layout
+      render :inline => @page.content.html_safe, :type => @page.template_type, :layout => @page.layout
     end
 
     def published

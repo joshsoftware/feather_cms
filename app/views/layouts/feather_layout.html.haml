@@ -9,6 +9,7 @@
     / Le styles
     = stylesheet_link_tag 'feather_cms/application', :media => 'all'
     = javascript_include_tag 'feather_cms/application'
+    = yield(:head)
     / Le HTML5 shim, for IE6-8 support of HTML5 elements
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -21,5 +22,9 @@
             %ul.nav
               %li 
                 = link_to 'Add Page' , new_page_path
+          - if FeatherCms::Config.sign_out_url
+            %ul.nav.pull-right
+              %li
+                = link_to 'Sign Out', sign_out_url
     .container
       = yield
