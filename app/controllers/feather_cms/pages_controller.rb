@@ -30,6 +30,7 @@ module FeatherCms
       @page.name = @page.name.parameterize
 
       @page.status = 'draft'
+      @page.template_type = 'html'
 
       if @page.save
         redirect_to pages_path
@@ -44,6 +45,7 @@ module FeatherCms
       @page.attributes = params[:page]
       @page.name = @page.name.parameterize
       @page.status = status
+      @page.template_type = 'html'
 
       if @page.save
         redirect_to pages_path

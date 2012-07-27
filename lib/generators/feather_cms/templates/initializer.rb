@@ -3,7 +3,4 @@ FeatherCms::Config.init do |c|
   c.authentication = {name: 'feather', password: 'password'}
   #Note: For before filter
   #c.authentication = :authenticate_user!
-  
-  #c.template_extenstion = 'html'   #default : html
-  c.template_types = ["html", "haml"]
 end

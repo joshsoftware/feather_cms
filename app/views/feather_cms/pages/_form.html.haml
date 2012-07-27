@@ -16,13 +16,9 @@
         %label.control-label{:for => 'layout'} Layout
         .controls
           = f.select :layout, FeatherCms::Config.layouts 
-      %label.control-label{:for => 'layout'} Template Type
-      .controls
-        = f.select :template_type, FeatherCms::Config.template_types
       .control-group
         %label.control-label{:for => 'textarea'} Content*
         .controls
           = f.hidden_field :content, :id => 'page_content'
-          =# f.text_area :content, :class => 'feather_editor input-xlarge span11', :row => '20'
           #epiceditor
         = f.submit 'Save', :class => 'btn btn-primary btn-large'
