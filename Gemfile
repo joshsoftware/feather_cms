@@ -8,6 +8,7 @@ gemspec
 # jquery-rails is used by the dummy application
 gem 'jquery-rails'
 gem 'haml', '>= 3.0.0'
+gem 'sass-rails'
 gem 'bootstrap-sass'
 
 group :development do
