@@ -12,3 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require 'feather_cms/epiceditor'
+//= require 'feather_cms/editor'
