@@ -1,8 +1,12 @@
 PATH
   remote: .
   specs:
-    feather_cms (0.0.5)
+    feather_cms (0.0.5.1)
+      bootstrap-sass (= 2.0.4.0)
+      haml (>= 3.0.0)
+      jquery-rails
       rails (~> 3.2.5)
+      sass-rails
 
 GEM
   remote: http://rubygems.org/
