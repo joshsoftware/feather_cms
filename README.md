@@ -1,4 +1,4 @@
-= FeatherCms
+=== FeatherCms
 
 # Motivation
  We have felt the pain of integrating static pages into a Rails application. There are plenty of gems available for this (Radiant, Locomotiv, etc.) but they are very heavy for what we need.
