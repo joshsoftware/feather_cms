@@ -29,22 +29,7 @@ If you want to add devise authentication set
     or
     c.authentication = :authenticate_admin!
 
-# Features
 
-* Creates a route for each static page.
-* Caching the static pages.
-* CodeMirror Editor for syntax highlighting. (Default: HTML)
-* Storage is file (default) or database.
-
-# Caveats
-You may need to ensure that the public/system folder exists (for file storage)
-
-# TODO
-
-* Move the basic authentication to the config/initializers/feather_cms.rb
-* Override the default authentication strategy from the controller
-* Move the code from generated controller to the gem (if required)
-    
 # Contribute
 Fork away and send me pull requests!
 
