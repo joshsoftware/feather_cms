@@ -1,12 +1,13 @@
 $(document).ready(function(){
+
   var opts = { 
     container: 'epiceditor',
     basePath: '/assets/feather_cms',
     focusOnLoad: true, 
-    file: { defaultContent: "" }
+    file: { defaultContent: '' }
   };
 
-  window.editor = new EpicEditor(opts).load();
+  window.editor = new EpicEditor(opts); //.load();
 
   window.editor.load(function(){
     window.editor.importFile(null, $('#page_content').val());
